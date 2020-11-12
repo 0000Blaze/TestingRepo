@@ -38,6 +38,9 @@ signUp(std::string username,std::string password):username(std::move(username)),
     void signup(){
         if(username!="" && password!=""){
             string dirPath = createDirectory();
+            if(dirPath == "USER_EXISTS"){
+                return;
+            }
             ofstream file;      //create a file
 
         /***** password ******/
@@ -74,7 +77,8 @@ signUp(std::string username,std::string password):username(std::move(username)),
         d1.setDirName(dirpath.data());
 
         if(d1.exists()){
-            std::cout<<"\ndirectory already exists";
+            std::cout<<"Directory already exists";
+            return ("USER_EXISTS");
         }
         else{
             d1.createDir();
@@ -84,7 +88,7 @@ signUp(std::string username,std::string password):username(std::move(username)),
         return dirpath;
     }
 
-/*    bool userExists(){
+    /*bool userExists(){
         DirectoryHandler checkuserDhl;
         checkuserDhl.setDirName("./");
         checkuserDhl.setDirForUse();
