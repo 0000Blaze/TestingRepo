@@ -60,6 +60,11 @@ signUp(std::string username,std::string password):username(std::move(username)),
             path = dirPath + string("\\\\shared.txt");
             file.open(path.c_str());
             file.close();
+
+        /******* favourite books *********/
+            path = dirPath + string("\\\\favourite.txt");
+            file.open(path.c_str());
+            file.close();
         }
     }
 

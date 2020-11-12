@@ -5,48 +5,54 @@ Write string in .txt file,choice are:
     1.Reading
     2.Completed
     3.Share
+    4.Favourite
 ******/
 
 class FileWriter{
 private:
-    std::string toWrite;
-    int choice;
     std::string username;
 public:
     FileWriter(){
-        toWrite="";
-        choice = -1;
+        username = "";
     }
 
-    FileWriter(std::string toWrite,int choice,std::string username):toWrite(std::move(toWrite)),choice(std::move(choice)),username(std::move(username)){}
+    FileWriter(std::string username):username(std::move(username)){}
 
-    void Writer();
+    void Writer(const int choice , std::string toWrite);
 };
 
-void FileWriter::Writer(){
+void FileWriter::Writer(const int choice,std::string toWrite){
 
-    ofstream fileWrite;
-    string path = std::string(".\\\\") + std::string("Users\\\\") + username;
+    if(username != ""){
+        ofstream fileWrite;
+        string path = std::string(".\\\\") + std::string("Users\\\\") + username;
 
-    if(choice == 1){
-        path = path + string("\\\\reading.txt");
-        fileWrite.open(path.c_str(),ios::app);
-        fileWrite << toWrite << endl;
-        fileWrite.close();
-    }
-    else if(choice == 2){
-        path = path + string("\\\\completed.txt");
-        fileWrite.open(path.c_str(),ios::app);
-        fileWrite << toWrite << endl;
-        fileWrite.close();
-    }
-    else if(choice == 3){
-        path = path + string("\\\\share.txt");
-        fileWrite.open(path.c_str(),ios::app);
-        fileWrite << toWrite << endl;
-        fileWrite.close();
-    }
-    else{
-        cout<<"Invalid choice,unable to write";
+        if(choice == 1){
+            path = path + string("\\\\reading.txt");
+            fileWrite.open(path.c_str(),ios::app);
+            fileWrite << toWrite << endl;
+            fileWrite.close();
+        }
+        else if(choice == 2){
+            path = path + string("\\\\completed.txt");
+            fileWrite.open(path.c_str(),ios::app);
+            fileWrite << toWrite << endl;
+            fileWrite.close();
+        }
+        else if(choice == 3){
+            path = path + string("\\\\share.txt");
+            fileWrite.open(path.c_str(),ios::app);
+            fileWrite << toWrite << endl;
+            fileWrite.close();
+        }
+        else if(choice == 4){
+            path = path + string("\\\\favourite.txt");
+            fileWrite.open(path.c_str(),ios::app);
+            fileWrite << toWrite << endl;
+            fileWrite.close();
+        }
+        else{
+            cout<<"Invalid choice,unable to write";
+        }
     }
 }

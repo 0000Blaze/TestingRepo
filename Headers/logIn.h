@@ -17,11 +17,15 @@ logIn(std::string usernamed,std::string passwordd):username(usernamed),password(
 bool IsLogedIn(){
 
     std::string path = std::string(".\\\\") + std::string("Users\\\\") + std::string(username) + std::string("\\\\password.txt");
-
-    ifstream read((path).c_str());
-        //read from file
-    getline(read,un);
-    getline(read,pw);
+    try{
+        ifstream read((path).c_str());
+    //read from file
+        getline(read,un);
+        getline(read,pw);
+    }
+    catch(...){
+        cout<<endl<<"File could not be found"<<endl;
+    }
 
     if(username!="" && password!="")
     {

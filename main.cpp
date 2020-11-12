@@ -30,23 +30,23 @@ int main(){
         cout<<endl<<"INVALID CHOICE"<<endl;
 /************************** END login and signIn ******************************************/
 /************************* Write in .txt files ****************************************/
-
-    cout<<"Choose which file to write in:"<<endl<<"1.reading    2.completed     3.share"<<endl;
-    cin>>choice;
     string toWrite;
+    cout<<"Choose which file to write in:"<<endl<<"1.reading    2.completed     3.share     4.Favourite"<<endl;
+    cin>>choice;
     cout<<"Enter the word to be written:";
     cin.ignore();                           //to flush residual wide spaces for use of getline
     getline(cin,toWrite);
-    FileWriter f(toWrite,choice,username);
-    f.Writer();
+
+    FileWriter f(username);
+    f.Writer(choice,toWrite);
 
 /********************** END write in .txt **************************************/
 /************************* Read in .txt files ****************************************/
 
-    cout<<"Choose which file to read from:"<<endl<<"1.reading    2.completed     3.share"<<endl;
+    cout<<"Choose which file to read from:"<<endl<<"1.reading    2.completed     3.share    4.favourite"<<endl;
     cin>>choice;
-    FileReader r(choice,username);
-    r.Reader();
+    FileReader r(username);
+    r.Reader(choice);
 
 /********************** END read in .txt **************************************/
 

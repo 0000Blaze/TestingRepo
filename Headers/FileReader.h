@@ -4,59 +4,70 @@
     1.Reading
     2.Completed
     3.Share
+    4.Favourite
 ******/
 
 class FileReader{
 private:
-    int choice, i=1;
-    std::string username;
+    int i=1;
+    std::string username, path ,myText;
 public:
     FileReader(){
-        choice = -1;
+        username = "";
     }
 
-    FileReader(int choice,std::string username):choice(std::move(choice)),username(std::move(username)){}
+    FileReader(std::string username):username(std::move(username)){}
 
-    void Reader();
+    void Reader(const int choice);
 };
 
-void FileReader::Reader(){
+void FileReader::Reader(const int choice){
+    if(username != ""){
+        ifstream fileReader;
+        path = std::string(".\\\\") + std::string("Users\\\\") + username;
 
-    ifstream fileReader;
-    string path = std::string(".\\\\") + std::string("Users\\\\") + username;
-    string myText;
-
-    if(choice == 1){
-        path = path + string("\\\\reading.txt");
-        fileReader.open(path.c_str());
-        cout<<endl<<"Reading list:"<<endl;
-        while (getline (fileReader, myText)) {      // Output the text from the file
-            cout <<i<<"."<< myText<<endl;
-            i++;
+        if(choice == 1){
+            path = path + string("\\\\reading.txt");
+            fileReader.open(path.c_str());
+            cout<<endl<<"Reading list:"<<endl;
+            while (getline (fileReader, myText)) {      // Output the text from the file
+                cout <<i<<"."<< myText<<endl;
+                i++;
+            }
+            fileReader.close();
         }
-        fileReader.close();
-    }
-    else if(choice == 2){
-        path = path + string("\\\\completed.txt");
-        fileReader.open(path.c_str());
-        cout<<endl<<"Completed list:"<<endl;
-        while (getline(fileReader, myText)) {      // Output the text from the file
-            cout <<i<<"."<< myText<<endl;
-            i++;
+        else if(choice == 2){
+            path = path + string("\\\\completed.txt");
+            fileReader.open(path.c_str());
+            cout<<endl<<"Completed list:"<<endl;
+            while (getline(fileReader, myText)) {      // Output the text from the file
+                cout <<i<<"."<< myText<<endl;
+                i++;
+            }
+            fileReader.close();
         }
-        fileReader.close();
-    }
-    else if(choice == 3){
-        path = path + string("\\\\share.txt");
-        fileReader.open(path.c_str());
-        cout<<endl<<"Share list:"<<endl;
-        while (getline(fileReader, myText)) {      // Output the text from the file
-            cout <<i<<"."<< myText<<endl;
-            i++;
+        else if(choice == 3){
+            path = path + string("\\\\share.txt");
+            fileReader.open(path.c_str());
+            cout<<endl<<"Share list:"<<endl;
+            while (getline(fileReader, myText)) {      // Output the text from the file
+                cout <<i<<"."<< myText<<endl;
+                i++;
+            }
+            fileReader.close();
         }
-        fileReader.close();
-    }
-    else{
-        cout<<"Invalid choice,unable to read";
+        else if(choice == 4){
+            path = path + string("\\\\favourite.txt");
+            fileReader.open(path.c_str());
+            cout<<endl<<"Favourite list:"<<endl;
+            while (getline(fileReader, myText)) {      // Output the text from the file
+                cout <<i<<"."<< myText<<endl;
+                i++;
+            }
+            fileReader.close();
+        }
+        else{
+            cout<<"Invalid choice,unable to read";
+        }
     }
 }
