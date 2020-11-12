@@ -57,7 +57,7 @@ signUp(std::string username,std::string password):username(std::move(username)),
             file.close();
 
         /******* shared books *********/
-            path = dirPath + string("\\\\shared.txt");
+            path = dirPath + string("\\\\share.txt");
             file.open(path.c_str());
             file.close();
 

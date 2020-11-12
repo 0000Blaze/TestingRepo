@@ -20,18 +20,18 @@ int main(){
         logIn LogIn(username,password);
         /*************** for trial *****************/
         if(LogIn.IsLogedIn()){
-            cout<<"User exists"<<endl;
+            cout<<"User exists";
         }
         else
-            cout<<"User does not exist"<<endl;
+            cout<<"User does not exist";
         /*************** end trial *************/
     }
     else
-        cout<<endl<<"INVALID CHOICE"<<endl;
+        cout<<endl<<"INVALID CHOICE";
 /************************** END login and signIn ******************************************/
 /************************* Write in .txt files ****************************************/
     string toWrite;
-    cout<<"Choose which file to write in:"<<endl<<"1.reading    2.completed     3.share     4.Favourite"<<endl;
+    cout<<endl<<"Choose which file to write in:"<<endl<<"1.reading    2.completed     3.share     4.Favourite"<<endl;
     cin>>choice;
     cout<<"Enter the word to be written:";
     cin.ignore();                           //to flush residual wide spaces for use of getline
